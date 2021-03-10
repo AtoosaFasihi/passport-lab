@@ -1,0 +1,13 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
+
+<% if (typeof sessions !== 'undefined') { %>
+    <P>Current Active Sessions:</P>
+    <% for (sessionId in sessions) { %>
+        <% const href = "/revoke/" + sessionId %>
+        <p>SessionId: <%= sessionId %></p>
+        <p>UserId: <%= sessions[sessionId] %></p>
+        <p><a href="<%= href %>">Revoke Session</a></p>
+    <% } %>
+<% } %>
